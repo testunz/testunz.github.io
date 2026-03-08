@@ -11,7 +11,7 @@ Per circa dieci anni ho lavorato in pronto soccorso, un luogo dove si impara rap
 
 Oggi lavoro in medicina interna, dove il tempo scorre in modo diverso: meno caos immediato, più ragionamento, più diagnostica, più storie lunghe da ascoltare.
 
-Molto prima della medicina, però, c'era un'altra cosa.
+Molto prima della medicina, però, c’era un’altra cosa.
 
 Il primo è stato un Commodore 64.  
 Schermo blu, cursore lampeggiante, comandi BASIC digitati senza sapere davvero cosa stessi facendo, ma con la sensazione molto chiara che lì dentro ci fosse qualcosa di importante.
@@ -29,5 +29,5 @@ Altre volte saranno solo appunti di viaggio di una mente che si distrae facilmen
 ## Articoli
 
 {% for post in site.posts limit:10 %}
-- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%d.%m.%Y" }}
+[{{ post.date | date: "%Y-%m-%d" }}] [{{ post.slug }}.md]({{ post.url }})
 {% endfor %}
