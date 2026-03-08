@@ -169,3 +169,13 @@ ul {
   border-left: 2px solid var(--muted);
   color: #b7dcb7;
 }
+.terminal-line::after {
+  content: " █";
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
