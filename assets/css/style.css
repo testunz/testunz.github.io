@@ -1,0 +1,111 @@
+:root {
+  --bg: #f6f6f2;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --line: #d8d8d1;
+  --link: #1a1a1a;
+  --link-hover: #555;
+  --max: 760px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.75;
+}
+
+.site-header {
+  padding: 2rem 1.25rem 0;
+}
+
+.site-nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.page-wrap {
+  max-width: var(--max);
+  margin: 2.5rem auto 5rem;
+  padding: 0 1.25rem;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+p {
+  margin: 0 0 1.2rem;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .site-header {
+    padding-top: 1.25rem;
+  }
+
+  .page-wrap {
+    margin-top: 2rem;
+  }
+}
