@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Titolo provvisorio
-date: YYYY-MM-DD
+title: Facciamo una seconda prova
+date: 2026-03-09
 tags:
 - medicina
 - tecnologia
@@ -9,22 +9,14 @@ tags:
 ---
 
 Breve introduzione.  
-Due o tre righe che spiegano perché stai scrivendo questo articolo.
 
 ## Premessa
 
 Contesto generale.  
-Per esempio: da dove nasce la domanda, il problema, o la curiosità.
 
 ## L’idea
 
-Qui descrivi la cosa che ti ha fatto riflettere.
-
-Può essere:
-- un episodio clinico
-- un esperimento tecnico
-- un ragionamento
-- una cosa che hai imparato
+Idea.
 
 ## Esperimento / prova
 
