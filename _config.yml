@@ -1,0 +1,5 @@
+title: Diario di una mente distratta
+description: Appunti sparsi di medicina, tecnologia e deviazioni mentali
+lang: it
+markdown: kramdown
+permalink: /articoli/:title/
