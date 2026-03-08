@@ -1,11 +1,12 @@
 :root {
-  --bg: #f6f6f2;
-  --text: #1a1a1a;
-  --muted: #6b6b6b;
-  --line: #d8d8d1;
-  --link: #1a1a1a;
-  --link-hover: #555;
-  --max: 760px;
+  --bg: #0b0f0c;
+  --panel: #0f1511;
+  --text: #d7ffd7;
+  --muted: #7ee787;
+  --line: #1f2a22;
+  --link: #8aff80;
+  --link-hover: #c9ffb8;
+  --max: 860px;
 }
 
 * {
@@ -20,19 +21,19 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.75;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.7;
 }
 
 .site-header {
-  padding: 2rem 1.25rem 0;
+  padding: 1.2rem 1.2rem 0;
 }
 
 .site-nav {
   max-width: var(--max);
   margin: 0 auto;
   display: flex;
-  gap: 1.25rem;
+  gap: 1.2rem;
   font-size: 0.95rem;
 }
 
@@ -41,37 +42,54 @@ body {
   text-decoration: none;
 }
 
+.site-nav a::before {
+  content: "[";
+}
+
+.site-nav a::after {
+  content: "]";
+}
+
 .site-nav a:hover {
-  color: var(--link);
-  text-decoration: underline;
+  color: var(--link-hover);
 }
 
 .page-wrap {
   max-width: var(--max);
-  margin: 2.5rem auto 5rem;
-  padding: 0 1.25rem;
+  margin: 1.5rem auto 4rem;
+  padding: 1.5rem 1.2rem 2rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 0 0 1px rgba(126, 231, 135, 0.05);
+}
+
+.page-wrap::before {
+  content: "testunz@diario:~$ cat index.md";
+  display: block;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
 }
 
 h1, h2, h3 {
-  font-weight: 400;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1.25;
   margin: 0 0 1rem;
+  color: var(--link);
 }
 
 h1 {
-  font-size: 2.4rem;
-  margin-top: 0.5rem;
+  font-size: 2.1rem;
 }
 
 h2 {
-  font-size: 1.4rem;
-  margin-top: 3rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--line);
+  font-size: 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
 }
 
 p {
-  margin: 0 0 1.2rem;
+  margin: 0 0 1rem;
 }
 
 a {
@@ -84,12 +102,17 @@ a:hover {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px dashed var(--line);
   margin: 2rem 0;
 }
 
 ul {
   padding-left: 1.2rem;
+}
+
+::selection {
+  background: #245b31;
+  color: #eaffea;
 }
 
 @media (max-width: 640px) {
@@ -98,14 +121,16 @@ ul {
   }
 
   h1 {
-    font-size: 2rem;
-  }
-
-  .site-header {
-    padding-top: 1.25rem;
+    font-size: 1.7rem;
   }
 
   .page-wrap {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    padding: 1.2rem 1rem 1.6rem;
+  }
+
+  .site-nav {
+    gap: 0.7rem;
+    flex-wrap: wrap;
   }
 }
