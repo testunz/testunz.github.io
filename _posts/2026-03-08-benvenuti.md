@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Benvenuti nel diario
 date: 2026-03-08
 ---
