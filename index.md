@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Diario di una mente distratta
 ---
 
