@@ -134,3 +134,45 @@ ul {
     flex-wrap: wrap;
   }
 }
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.post-content {
+  margin-top: 1.5rem;
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol {
+  max-width: 72ch;
+}
+
+.post-content h2,
+.post-content h3 {
+  margin-top: 2.2rem;
+}
+
+.post-content pre,
+.post-content code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.post-content pre {
+  background: #0a0d0b;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--muted);
+  color: #b7dcb7;
+}
