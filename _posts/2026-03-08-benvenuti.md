@@ -4,6 +4,8 @@ title: Benvenuti nel diario
 date: 2026-03-08
 ---
 
+## Primo passo in diagonale
+
 Questo è il primo post di Diario di una mente distratta.
 In realtà è il primo test, quello per vedere se la roba gira e funziona. Che poi, perchè non dovrebbe?
 
