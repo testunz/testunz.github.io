@@ -2,10 +2,6 @@
 layout: post
 title: Facciamo una seconda prova
 date: 2026-03-09
-tags:
-- medicina
-- tecnologia
-- appunti
 ---
 
 Breve introduzione.  
