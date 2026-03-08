@@ -28,14 +28,6 @@ Altre volte saranno solo appunti di viaggio di una mente che si distrae facilmen
 
 ## Articoli
 
-{% for post in site.posts limit:5 %}
-
-### [{{ post.title }}]({{ post.url }})
-
-{{ post.date | date: "%d %B %Y" }}
-
-{{ post.excerpt }}
-
----
-
+{% for post in site.posts limit:10 %}
+- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%d.%m.%Y" }}
 {% endfor %}
