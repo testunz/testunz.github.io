@@ -28,4 +28,14 @@ Altre volte saranno solo appunti di viaggio di una mente che si distrae facilmen
 
 ## Articoli
 
-Gli articoli sono qui sotto, in ordine cronologico.
+{% for post in site.posts limit:5 %}
+
+### [{{ post.title }}]({{ post.url }})
+
+{{ post.date | date: "%d %B %Y" }}
+
+{{ post.excerpt }}
+
+---
+
+{% endfor %}
