@@ -5,23 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
-
 <body>
+  {% assign page_url = page.url | default: '/' %}
+  {% assign shell_path = '~' %}
+  {% assign shell_command = page.command | default: 'cat README.md' %}
+  {% assign hero_command = shell_command %}
+  {% assign articles_active = false %}
+  {% if page_url == '/articoli/' or page.layout == 'post' %}
+    {% assign articles_active = true %}
+  {% endif %}
+  {% if page_url == '/articoli/' %}
+    {% assign shell_path = '~/articoli' %}
+    {% assign hero_command = 'find ./articoli -maxdepth 1 -type f | sort -r' %}
+  {% endif %}
+  {% if page.layout == 'post' %}
+    {% assign shell_path = '~/articoli' %}
+    {% assign shell_command = 'cat ' | append: page.slug | append: '.md' %}
+    {% assign hero_command = shell_command %}
+  {% endif %}
 
-  <header class="site-header">
-    <nav class="site-nav">
-      <a href="/">Home</a>
-      <a href="/articoli/">Articoli</a>
-      <a href="https://github.com/testunz" target="_blank" rel="noopener">GitHub</a>
+  <div class="screen-layer"></div>
+
+  <div class="shell-window">
+    <header class="shell-chrome">
+      <div class="chrome-controls" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="chrome-title">testunz@diario: {{ shell_path }}</div>
+      <div class="chrome-status">session: local</div>
+    </header>
+
+    <nav class="shell-tabs" aria-label="Navigazione principale">
+      <a href="{{ '/' | relative_url }}" class="{% if page_url == '/' %}is-active{% endif %}">./home</a>
+      <a href="{{ '/articoli/' | relative_url }}" class="{% if articles_active %}is-active{% endif %}">ls articoli/</a>
+      <a href="https://github.com/testunz" target="_blank" rel="noopener">open github</a>
     </nav>
-  </header>
 
-  <main class="page-wrap">
-    {{ content }}
-  </main>
+    <section class="terminal-hero" aria-label="Sessione terminale">
+      <div class="hero-command">
+        <span class="prompt">testunz@diario:{{ shell_path }}$</span>
+        <span class="command">{{ hero_command }}</span>
+      </div>
 
+      <div class="hero-output">
+        {% if page.layout == 'post' %}
+          <div class="hero-line"><span class="hero-label">file</span><span>{{ page.slug }}.md</span></div>
+          <div class="hero-line"><span class="hero-label">titolo</span><span>{{ page.title }}</span></div>
+          <div class="hero-line"><span class="hero-label">data</span><span>{{ page.date | date: "%Y-%m-%d" }}</span></div>
+          <div class="hero-line"><span class="hero-label">path</span><span>{{ page.url }}</span></div>
+        {% elsif page_url == '/articoli/' %}
+          <div class="hero-line"><span class="hero-label">directory</span><span>~/articoli</span></div>
+          <div class="hero-line"><span class="hero-label">totale</span><span>{{ site.posts.size }} file markdown</span></div>
+          <div class="hero-line"><span class="hero-label">ultimo</span><span>{% if site.posts.first %}{{ site.posts.first.date | date: "%Y-%m-%d" }}{% else %}n/a{% endif %}</span></div>
+          <div class="hero-line"><span class="hero-label">output</span><span>elenco ordinato per data</span></div>
+        {% else %}
+          <div class="hero-line"><span class="hero-label">utente</span><span>testunz</span></div>
+          <div class="hero-line"><span class="hero-label">focus</span><span>medicina, Linux, self-hosting, AI</span></div>
+          <div class="hero-line"><span class="hero-label">blog</span><span>{{ site.description }}</span></div>
+          <div class="hero-line"><span class="hero-label">stato</span><span>prompt disponibile<span class="cursor">_</span></span></div>
+        {% endif %}
+      </div>
+    </section>
+
+    <div class="shell-body">
+      <aside class="shell-sidebar">
+        <section class="sidebar-panel">
+          <p class="sidebar-label">utente</p>
+          <p class="sidebar-value">testunz</p>
+        </section>
+
+        <section class="sidebar-panel">
+          <p class="sidebar-label">profilo</p>
+          <p class="sidebar-copy">Medicina interna, Linux, automazioni domestiche, deviazioni mentali ben catalogate solo a tratti.</p>
+        </section>
+
+        <section class="sidebar-panel">
+          <p class="sidebar-label">stack</p>
+          <ul class="sidebar-list">
+            <li>medicina clinica</li>
+            <li>linux e self-hosting</li>
+            <li>AI e piccoli esperimenti</li>
+          </ul>
+        </section>
+
+        <section class="sidebar-panel">
+          <p class="sidebar-label">stato</p>
+          <p class="sidebar-copy">Shell pronta. Prompt stabile. Rumore di fondo minimo.</p>
+        </section>
+      </aside>
+
+      <main class="shell-main">
+        <section class="shell-output">
+          {{ content }}
+        </section>
+      </main>
+    </div>
+  </div>
 </body>
 </html>

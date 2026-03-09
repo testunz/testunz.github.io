@@ -1,33 +1,45 @@
 ---
 layout: default
 title: Diario di una mente distratta
+command: ./bootstrap --profile diario
 ---
 
 # Diario di una mente distratta
 
-Sono un medico. Uno Pneumologo.
+<div class="terminal-note">
+  <p>medico in medicina interna, ex pronto soccorso, curioso cronico davanti a ogni cursore lampeggiante.</p>
+</div>
 
-Prestato per dieci anni al pronto soccorso, un luogo dove realtà e immaginazione si fondono nello spazio tempo infinito di un turno.
+Sono un medico. Uno pneumologo.
 
-Oggi lavoro in medicina interna, dove invece il tempo scorre in modo diverso. Meno caos immediato, più ragionamento, più diagnostica, più cose da spulciare, roba nuova da imparare, carne viva. 
+Per dieci anni sono stato in pronto soccorso, un posto dove realtà e immaginazione si mischiano nello spazio-tempo infinito di un turno. Oggi lavoro in medicina interna: meno impatto immediato, più ragionamento, più diagnostica, più materiale da smontare e capire.
 
-Molto prima della medicina, però, c’è stato lui.
+Molto prima della medicina, però, c'è stato un monitor blu con un cursore che lampeggiava.
 
-Il primo è stato un C64.  
-Schermo blu, cursore lampeggiante, comandi BASIC digitati senza sapere davvero cosa stessi facendo, ma con la sensazione molto chiara che lì dentro ci fosse qualcosa di importante da capire, da smontare.
+Il primo computer è stato un C64. Comandi BASIC digitati senza sapere bene cosa stessi facendo, ma con la sensazione chiarissima che lì dentro ci fosse qualcosa di importante da capire e smontare.
 
 Da allora non ho più smesso.
 
-Questo spazio è un posto semplice dove raccolgo pensieri sparsi, esperimenti e deviazioni mentali.
+Questo blog raccoglie pensieri sparsi, esperimenti e deviazioni mentali. Niente branding pulito, niente cartoline: solo output, file aperti, note prese al volo.
 
-A volte parlerò di medicina.  
-A volte di tecnologia.  
-A volte di Linux, server domestici, AI o piccoli progetti inutilmente complicati, che ti rubano le notti.
+## Cosa passa da qui
 
-Altre volte saranno solo appunti di viaggio di una mente che si distrae facilmente.
+- medicina pratica e ragionata
+- Linux, server di casa, automazioni, AI
+- progetti inutilmente complicati che meritano comunque di esistere
+- appunti veloci di una mente facilmente distraibile
 
-## Articoli
+## Ultimi file aperti
 
-{% for post in site.posts limit:10 %}
-[{{ post.date | date: "%Y-%m-%d" }}] [{{ post.slug }}.md]({{ post.url }})
-{% endfor %}
+<div class="command-block">
+  <div class="inline-command">ls -lt ~/articoli | head</div>
+  <div class="post-index post-index--compact">
+  {% for post in site.posts limit: 8 %}
+    <a class="post-row" href="{{ post.url | relative_url }}">
+      <span class="post-row__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <span class="post-row__name">{{ post.slug }}.md</span>
+      <span class="post-row__title">{{ post.title }}</span>
+    </a>
+  {% endfor %}
+  </div>
+</div>
