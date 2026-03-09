@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace %}
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ meta_description }}">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
@@ -21,21 +21,14 @@
           <p>testunz@diario: ~/blog</p>
         </div>
         <div class="terminal-body">
-          <div class="terminal-line">testunz@diario:~$ ./apri-diario --theme ascii</div>
-          <pre class="ascii-banner" aria-label="Diario di una mente distratta">+----------------------------------------------------------------------------------+
-|  ____  _             _                                                           |
-| |  _ \(_) __ _ _ __ (_) ___                                                      |
-| | | | | |/ _` | '_ \| |/ _ \                                                     |
-| | |_| | | (_| | | | | | (_) |                                                    |
-| |____/|_|\__,_|_| |_|_|\___/                                                     |
-|                                                                                  |
-|                    [ Diario di una mente distratta ]                             |
-+----------------------------------------------------------------------------------+</pre>
+          <div class="terminal-line">testunz@diario:~$ cat README.md</div>
+          <p class="hero-title">{{ site.title }}</p>
+          <p class="hero-copy">{{ site.description }}</p>
         </div>
       </div>
 
       <div class="site-intro">
-        <p class="site-tagline">{{ site.description }}</p>
+        <p class="site-tagline">Pensieri clinici, tecnologia e deviazioni mentali raccolti senza fretta.</p>
         <nav class="site-nav" aria-label="Navigazione principale">
           <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
           <a href="{{ '/articoli/' | relative_url }}"{% if page.url == '/articoli/' %} aria-current="page"{% endif %}>Articoli</a>

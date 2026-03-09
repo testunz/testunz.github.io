@@ -4,6 +4,8 @@ title: Diario di una mente distratta
 ---
 
 <section class="home-intro">
+  <h1>Diario di una mente distratta</h1>
+
   <p>Sono un medico. Uno Pneumologo.</p>
 
   <p>Prestato per dieci anni al pronto soccorso, un luogo dove realtà e immaginazione si fondono nello spazio tempo infinito di un turno.</p>
@@ -34,10 +36,11 @@ title: Diario di una mente distratta
 
   <div class="post-list">
     {% for post in site.posts limit:10 %}
+      {% capture post_preview %}{{ post.content | markdownify | strip_html | normalize_whitespace | truncate: 180 }}{% endcapture %}
       <article class="post-card">
         <p class="post-card-meta">{{ post.date | date: "%d %B %Y" }}</p>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 180 }}</p>
+        <p>{{ post_preview | strip }}</p>
         <a class="post-card-link" href="{{ post.url | relative_url }}">Apri articolo -></a>
       </article>
     {% endfor %}
