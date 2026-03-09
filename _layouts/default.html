@@ -3,25 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace %}
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
+  <meta name="description" content="{{ meta_description }}">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 
-<body>
-
+<body class="layout-{{ page.layout | default: 'default' }}">
   <header class="site-header">
-    <nav class="site-nav">
-      <a href="/">Home</a>
-      <a href="/articoli/">Articoli</a>
-      <a href="https://github.com/testunz" target="_blank" rel="noopener">GitHub</a>
-    </nav>
+    <div class="site-shell">
+      <div class="terminal-frame">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <p>testunz@diario: ~/blog</p>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">testunz@diario:~$ ./apri-diario --theme ascii</div>
+          <pre class="ascii-banner" aria-label="Diario di una mente distratta">+----------------------------------------------------------------------------------+
+|  ____  _             _                                                           |
+| |  _ \(_) __ _ _ __ (_) ___                                                      |
+| | | | | |/ _` | '_ \| |/ _ \                                                     |
+| | |_| | | (_| | | | | | (_) |                                                    |
+| |____/|_|\__,_|_| |_|_|\___/                                                     |
+|                                                                                  |
+|                    [ Diario di una mente distratta ]                             |
++----------------------------------------------------------------------------------+</pre>
+        </div>
+      </div>
+
+      <div class="site-intro">
+        <p class="site-tagline">{{ site.description }}</p>
+        <nav class="site-nav" aria-label="Navigazione principale">
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+          <a href="{{ '/articoli/' | relative_url }}"{% if page.url == '/articoli/' %} aria-current="page"{% endif %}>Articoli</a>
+          <a href="https://github.com/testunz" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <main class="page-wrap">
     {{ content }}
   </main>
 
+  <footer class="site-footer">
+    <p>testunz@diario:~$ echo "fine trasmissione"</p>
+  </footer>
 </body>
 </html>
